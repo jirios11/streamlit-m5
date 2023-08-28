@@ -118,6 +118,8 @@ ax.hist(data['Age'])
 ax.set_xlabel('Edad')
 ax.set_ylabel('Frecuencia')
 st.pyplot(fig)
+st.write('La mayor frecuencia de edad se encuentra entre los 20 y los 30 años')
+
 
 #Frecuencias por area
 st.subheader('Grafica de frecuencias por area')
@@ -128,6 +130,7 @@ data_by_unit = data[['Unit', 'Employee_ID']].groupby('Unit').count()
 ax2 = st.bar_chart(data_by_unit)
 
 st.pyplot(fig2)
+st.write('IT es el area de la que mas registros hay')
 
 #Ciudades con mayor indice de deserción
 st.title('Indice de deserción por ciudad')
@@ -138,14 +141,23 @@ ax3 = st.line_chart(ar_hometown)
 
 st.pyplot(fig3)
 
+st.write('La ciudad con el indice de desercion promedio mas alto es Clinton y la ciudad con el promedio más bajo es Springfield')
+
 #Indice de desercion por edad
 st.title('Indice de desercion por edad')
 fig4, ax4 = plt.subplots()
-ax4.scatter(np.log(data['Age']), data['Attrition_rate'])
+ax4.scatter(data['Age'], data['Attrition_rate'])
+ax4.set_xlabel('Edad')
+ax4.set_ylabel('Tasa de desercion')
 st.pyplot(fig4)
-
+st.write ('No se nota una correlacion entre la edad y la tasa de desercion')
 #Indice de desercion por tiempo de servicio
 st.title('Indice de desercion por tiempo de servicio')
 fig5, ax5 = plt.subplots()
 ax5.scatter(data['Time_of_service'],data['Attrition_rate'])
+ax5.set_xlabel('Tiempo de servicio')
+ax5.set_ylabel('Tasa de desercion')
+
+st.write('No se puede notar una correlacion entre el tiempo de servicio y la tasa de desercion')
+
 st.pyplot(fig5)
